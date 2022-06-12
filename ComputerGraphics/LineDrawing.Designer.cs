@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
             this.canvasPictureBox = new System.Windows.Forms.PictureBox();
             this.x1TextBox = new System.Windows.Forms.TextBox();
             this.y1TextBox = new System.Windows.Forms.TextBox();
@@ -44,6 +43,8 @@
             this.ddaRadioButton = new System.Windows.Forms.RadioButton();
             this.basicRadioButton = new System.Windows.Forms.RadioButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.xColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.canvasLabel = new System.Windows.Forms.Label();
             this.graphicButton = new System.Windows.Forms.Button();
             this.plusZoomButton = new System.Windows.Forms.Button();
@@ -51,8 +52,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.zoomLabel = new System.Windows.Forms.Label();
             this.canvasPanel = new System.Windows.Forms.Panel();
-            this.xColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).BeginInit();
             this.algorithmsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -190,14 +189,26 @@
             this.dataGridView.Size = new System.Drawing.Size(259, 304);
             this.dataGridView.TabIndex = 10;
             // 
+            // xColumn
+            // 
+            this.xColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xColumn.HeaderText = "X";
+            this.xColumn.Name = "xColumn";
+            // 
+            // yColumn
+            // 
+            this.yColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.yColumn.HeaderText = "Y";
+            this.yColumn.Name = "yColumn";
+            // 
             // canvasLabel
             // 
             this.canvasLabel.AutoSize = true;
             this.canvasLabel.Location = new System.Drawing.Point(12, 15);
             this.canvasLabel.Name = "canvasLabel";
-            this.canvasLabel.Size = new System.Drawing.Size(86, 15);
+            this.canvasLabel.Size = new System.Drawing.Size(89, 15);
             this.canvasLabel.TabIndex = 11;
-            this.canvasLabel.Text = "Area de trasero";
+            this.canvasLabel.Text = "Area de trazado";
             // 
             // graphicButton
             // 
@@ -252,18 +263,6 @@
             this.canvasPanel.Size = new System.Drawing.Size(750, 750);
             this.canvasPanel.TabIndex = 17;
             // 
-            // xColumn
-            // 
-            this.xColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xColumn.HeaderText = "X";
-            this.xColumn.Name = "xColumn";
-            // 
-            // yColumn
-            // 
-            this.yColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.yColumn.HeaderText = "Y";
-            this.yColumn.Name = "yColumn";
-            // 
             // LineDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -285,6 +284,8 @@
             this.Controls.Add(this.x2TextBox);
             this.Controls.Add(this.y1TextBox);
             this.Controls.Add(this.x1TextBox);
+            this.Name = "LineDrawing";
+            this.Text = "Line Drawing";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvasPictureBox)).EndInit();
             this.algorithmsGroupBox.ResumeLayout(false);
@@ -294,9 +295,7 @@
             this.canvasPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Name = "LineDrawing";
-            this.Text = "Line Drawing";
-            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace ComputerGraphics
 {
-    public partial class PolygonDrawing : Form
+    public partial class Transformations2D : Form
     {
         Bitmap bmp;
         Graphics g;
@@ -25,7 +25,7 @@ namespace ComputerGraphics
         Dictionary<String, Point> points;
         List<Tuple<String, String>> paths;
 
-        public PolygonDrawing()
+        public Transformations2D()
         {
             // Set the initial size of the canvas
             width = 750;
@@ -149,11 +149,11 @@ namespace ComputerGraphics
         {
             foreach (var path in paths)
             {
-                DrawLine(path.Item1, path.Item2, Color.FromArgb(255, 59, 66, 82));
+                DrawLine(path.Item1, path.Item2, Color.MediumBlue);
             }
             foreach (var point in points)
                 //Console.WriteLine(lbls[i] + "," + Pts[i].X.ToString() + ", " + Pts[i].Y.ToString());
-                DrawPixel(point.Value.X, point.Value.Y, Color.FromArgb(255, 46, 52, 64), point.Key);
+                DrawPixel(point.Value.X, point.Value.Y, Color.Blue, point.Key);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -165,9 +165,9 @@ namespace ComputerGraphics
         // Draws the plane axes int the canvas
         private void DrawAxes()
         {
-            Pen mainAxesPen = new Pen(Color.FromArgb(255, 46, 52, 64)); // Pen to draw the main two axes
-            Pen subAxesPen = new Pen(Color.FromArgb(255, 216, 222, 233)); // Pen to draw the secondary axes
-            Pen subSubAxesPen = new Pen(Color.FromArgb(255, 229, 233, 240)); // Pen to draw the little axes
+            Pen mainAxesPen = new Pen(Color.Black); // Pen to draw the main two axes
+            Pen subAxesPen = new Pen(Color.FromArgb(255, 190, 190, 190)); // Pen to draw the secondary axes
+            Pen subSubAxesPen = new Pen(Color.FromArgb(255, 240, 240, 240)); // Pen to draw the little axes
 
             // Draw the little axes
             for (int i = 0; i < midWidth; i += pixelSize)
@@ -206,15 +206,15 @@ namespace ComputerGraphics
             g = Graphics.FromImage(bmp);
 
             float stringSize = pixelSize / 1.2f;
-            Font font = new Font("Arial", Pixel2Em(stringSize), FontStyle.Bold);
+            Font font = new Font("Arial", Pixel2Em(stringSize));
 
             // Brush for painting pixels
             SolidBrush pixelBrush = new SolidBrush(color);
-            SolidBrush stringBrush = new SolidBrush(Color.FromArgb(255, 94, 129, 172));
+            SolidBrush stringBrush = new SolidBrush(Color.Black);
 
             // Draw a pixel filling a ellipse with a SolidBrush
             g.FillEllipse(pixelBrush, x, y, pixelSize - 1, pixelSize - 1);
-            g.DrawString(label, font, stringBrush, x + pixelSize / 3, y - pixelSize / 3);
+            g.DrawString(label, font, stringBrush, x, y);
 
             UpdateCanvas(); // Updates the canvas
         }
@@ -249,6 +249,28 @@ namespace ComputerGraphics
             canvasPictureBox.Image = bmp;
         }
 
+        private void Transformations2D_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(scaleRadioButton.Checked)
+            {
+                int x = int.Parse(textBox1.Text);
+                int y = int.Parse(textBox2.Text);
+
+            } else if(moveRadioButton.Checked)
+            {
+
+            } else if (rotateRadioButton.Checked)
+            {
+
+            }
+            
+        }
+
         // Initializes a new image for the canvas
         private void InitializeCanvas()
         {
@@ -264,7 +286,7 @@ namespace ComputerGraphics
         private void ClearPlane()
         {
             g = Graphics.FromImage(bmp);
-            g.Clear(Color.FromArgb(255, 236, 239, 244));
+            g.Clear(Color.White);
             DrawAxes();
         }
     }

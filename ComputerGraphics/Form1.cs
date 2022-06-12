@@ -21,7 +21,7 @@ namespace ComputerGraphics
 
         private void transformationsButton_Click(object sender, EventArgs e)
         {
-            Transformations transformations = new Transformations();
+            Transformations2D transformations = new Transformations2D();
             transformations.ShowDialog();
         }
 
